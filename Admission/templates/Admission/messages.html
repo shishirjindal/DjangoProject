@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'Admission/index.css' %}" />
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 20px;
+    text-align: center;
+    color: rgb(192,57,43);
+}
+</style>
+</head>
+<div class="header">
+<div id="wrapper">
+	<div class="logo">
+	</div>
+	<div id="menu">
+		<a href="{% url 'Admission:home_page' user.id %}">Home</a>
+		<a href="{% url 'Admission:update' user.id %}">Update</a>
+		<a href="{% url 'Admission:logout_user' %}">Logout</a>
+	</div>
+</div>
+</div>
+<div style="margin-top:100px;margin-left:500px;position:absolute;height:230px;width:360px;border:1px solid rgb(70,120,180);padding:0px">
+	<div style="background-color:rgb(70,120,180);color:white;height:20px;padding:5px;font-family:Catull;">
+		Start a new Chat
+	</div><br>
+	<div style="margin-left:10px">
+	<form action="{% url 'Admission:message' user.id %}" method="POST" autocomplete="on">
+	{% csrf_token %}
+		<pre>
+<input type="email" name="E" placeholder="Email" required><br>
+<textarea name='M' id="textarea1" placeholder="Message..." required></textarea><br>
+<input type="submit" value="Send">
+		</pre>
+	</form>
+	</div>
+</div>
+<div id="div15">
+{% for s in friends %}
+{% if user.email != s.email %}
+	<table>
+		{{ s.name }}<br>
+		<tr>
+			<td><b>Sender</td>
+			<td><b>Receiver</td>
+			<td><b>Message</td>
+		</tr>
+		{% for c in chat %}
+			{% if  c.senderemail ==  user.email and c.receiveremail == s.email %}
+			<tr>
+			 	<td>You</td>
+			 	<td>{{ c.receiver }}</td>
+			 	<td>{{ c.message }}</td>
+			</tr>
+			{% endif %}
+			{% if  c.receiveremail ==  user.email and c.senderemail == s.email %}
+			<tr>
+			 	<td>{{ c.sender }}</td>
+			 	<td>You</td>
+				<td>{{ c.message }}</td>
+			</tr>
+			{% endif %}
+		{% endfor %}
+	</table>
+	<br><br><hr><br>
+{% endif %}
+{% endfor %}
+</div>

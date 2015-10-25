@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'Admission/index.css' %}" />
+<style>
+table, th, td {
+    border: 1px solid rgb(70,120,180);
+    border-collapse:collapse;   
+}
+th, td {
+	text-align: center;
+    padding: 20px;
+    font-size: 22px;
+    color: red;
+}
+</style>
+<div class="header">
+<div id="wrapper">
+	<div class="logo">
+		<img src="images/download.png" alt="image not available">
+	</div>
+</div>
+</div>
+
+
+<div id="div07">
+<pre>
+<h1 style="color:rgb(70,120,180);">Application Forms</h1>
+<table>
+	<tr>
+		<td>Name</td>
+		<td>Percentage(12th)</td>
+		<td>Status</td>
+	</tr>
+	{% for x in user %}
+	{% if x.colleges.name == college.name %}
+	<tr>
+		<td>{{x.name}}</td>
+		<td>{{x.percentage}}</td>
+		<td></td>
+	</tr>
+	{% endif %}
+	{% endfor %}
+</table>
+</pre>
+</div>

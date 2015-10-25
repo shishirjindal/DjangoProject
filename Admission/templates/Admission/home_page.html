@@ -1,0 +1,57 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'Admission/index.css' %}" />
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 20px;
+    color: rgb(192,57,43);
+}
+</style>
+</head>
+<div class="header">
+<div id="wrapper">
+	<div class="logo">
+	</div>
+	<div id="menu">
+		<a href="{% url 'Admission:home_page' user.id %}">Home</a>
+		<a href="{% url 'Admission:messages' user.id %}">Messages</a>
+		<a href="{% url 'Admission:update' user.id %}">Update</a>
+		<a href="{% url 'Admission:logout_user' %}">Logout</a>
+	</div>
+</div>
+</div>
+<div id="div13">
+<img src="/static/Admission/profiles/default.png" />
+<!-- {% if user.avatar == None %}
+    <img src="/static/Admission/profiles/default.png" />
+{% else %}
+    <img src="/static/Admission/profiles/{{user.avatar}}"/>
+{% endif %} -->
+</div>
+</div>
+<div id="div12">
+<pre>
+<table>
+	<tr>
+		<td>Enrollment No.</td>
+		<td>{{ user.Enrollment }}</td>
+	</tr>
+	<tr>
+		<td>Name</td>
+		<td>{{ user.name }}</td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td>{{ user.email }}</td>
+	</tr>
+	<tr>
+		<td>Contact No.</td>
+		<td>{{ user.contact }}</td>
+	</tr>
+</table>
+</pre>
+</div>

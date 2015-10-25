@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'Admission/index.css' %}" />
+<div class="header">
+<div id="wrapper">
+	<div class="logo">
+		<!-- <img src="statimages/download.png" alt="image not available"> -->
+	</div>
+	<div id="menu">
+		<a href="{% url 'Admission:index' %}">Home</a>
+		<a href="{% url 'Admission:institute' %}">Institute</a>
+		<a href="{% url 'Admission:campus_life' %}">Campus Life</a>
+		<a href="{% url 'Admission:departments' %}">Departments</a>
+		<a href="{% url 'Admission:register' %}">Register/Login</a>
+	</div>
+</div>
+</div>

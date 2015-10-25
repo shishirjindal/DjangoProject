@@ -1,0 +1,39 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'Admission/index.css' %}" />
+<div class="header">
+<div id="wrapper">
+	<div class="logo">
+		<!-- <img src="statimages/download.png" alt="image not available"> -->
+	</div>
+	<div id="menu">
+		<a href="{% url 'Admission:home_page' user.id %}">Home</a>
+		<a href="{% url 'Admission:messages' user.id %}">Messages</a>
+		<a href="{% url 'Admission:logout_user' %}">Logout</a>
+	</div>
+</div>
+</div>
+
+<div id="div05">
+<h1 style="color:rgb(70,120,180);font-style:Catull;">Update Your Details</h1>
+<pre>
+<form action="{% url 'Admission:update_user' user.id %}" method="POST">
+{% csrf_token %}
+<input type="text" name="F" placeholder="Name"><br>
+<input type="email" name="E" placeholder="Email"><br>
+<input type="password" name="P" placeholder="Password"><br>
+<input type="number" name="D" placeholder="Age"><br>
+<input type="number" name="C" placeholder="Contact No."><br>
+
+<input type="submit" value="Update">
+</pre>
+</form>
+</div>
+
+<!-- <div id="div06">
+	<h1 style="color:rgb(70,120,180);font-style:Catull;">Update Profile Pic</h1><br><br>
+	<form action="{% url 'Admission:update_profile' user.id %}" method="POST">
+	{% csrf_token %}
+	<input type="file" name="file1">
+	<input type="submit" value="Upload">
+	</form>
+</div> -->

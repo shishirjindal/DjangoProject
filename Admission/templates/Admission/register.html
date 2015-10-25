@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'Admission/index.css' %}" />
+<div class="header">
+<div id="wrapper">
+	<div class="logo">
+		<!-- <img src="statimages/download.png" alt="image not available"> -->
+	</div>
+	<div id="menu">
+		<a href="{% url 'Admission:index' %}">Home</a>
+		<a href="{% url 'Admission:institute' %}">Institute</a>
+		<a href="{% url 'Admission:register' %}">Register/Login</a>
+	</div>
+</div>
+</div>
+
+<div id="div05">
+<h1 style="color:rgb(70,120,180);font-style:Catull;">Student Registration</h1>
+<pre>
+<form action="{% url 'Admission:register_user' %}" method="POST">
+{% csrf_token %}
+<input type="number" name="enroll" placeholder="Enrollment Number" required><br>
+<input type="text" name="F" placeholder="Name" required><br>
+<input type="text" name="E" placeholder="Email" required><br>
+<input type="password" name="P" placeholder="Password" required><br>
+<input type="number" name="D" placeholder="Age" required><br>
+<input type="number" name="C" placeholder="Contact No." required><br>
+
+<input type="submit" value="Register">
+</pre>
+</form>
+</div>
+
+
+<div id="div03">
+<h1 style="color:rgb(70,120,180);font-style:Catull;">Students Login Here</h1>
+<pre>
+<form action="{% url 'Admission:login'%}" method="POST">
+{% csrf_token %}
+<input type="text" name="E" placeholder="Email"><br>
+<input type="password" name="P" placeholder="Password"><br>
+<input type="submit" value="Log In">
+</form>
+</pre>
+</div>
